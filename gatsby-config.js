@@ -1,3 +1,8 @@
+// .env variables
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: "MarwanAlsaydali",
@@ -10,7 +15,19 @@ module.exports = {
       github: "https://github.com/marwanalsaydali",
       linkedin: "https://www.linkedin.com/in/marwanalsaydali/",
       email: "marwanalsaydali@gmail.com",
+      website: "https://marwanalsaydali.com",
     },
   },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-gatsby-cloud"],
+  plugins: [
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-gatsby-cloud",
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        typekit: {
+          id: process.env.TYPEKIT_ID,
+        },
+      },
+    },
+  ],
 };
